@@ -32,8 +32,9 @@ The dataset contains product-level inventory and pricing information from Zepto.
 
 
 **Database Schema**
+``` sql
 CREATE TABLE zepto(
-sku_id SERIAL PRIMARY KEY,
+sku\_id SERIAL PRIMARY KEY,
 category VARCHAR(120),
 name VARCHAR(150) NOT NULL,
 mrp NUMERIC(8,2),
@@ -44,6 +45,7 @@ weightInGms INTEGER,
 outOfStock BOOLEAN,
 quantity INTEGER
 );
+```
 
 **Data Cleaning**
 Before analysis, several cleaning steps were performed:
@@ -66,17 +68,17 @@ Key EDA tasks performed:
 5. Investigating missing values
 
 Example query:
-SELECT DISTINCT category
+```SELECT DISTINCT category
 FROM zepto
-ORDER BY category;
+ORDER BY category;```
 
 **Key Business Insights**
 1. Revenue Potential by Category
-SELECT category,
+```SELECT category,
 SUM(discountedsellingprice * availablequantity) AS estimated_revenue
 FROM zepto
 GROUP BY category
-ORDER BY estimated_revenue DESC;
+ORDER BY estimated_revenue DESC;```
 
 **Insight**
 1. Categories with the highest estimated inventory revenue represent the core revenue drivers for the platform and should receive priority in:
@@ -85,21 +87,21 @@ ORDER BY estimated_revenue DESC;
 4. marketing campaigns
 
 2. High Value Products Currently Out of Stock
-SELECT name, mrp
+```SELECT name, mrp
 FROM zepto
 WHERE mrp > 300
-AND outofstock = TRUE;
+AND outofstock = TRUE;```
 
 **Insight**
 High-value products being out of stock indicate lost revenue opportunities and potential supply chain inefficiencies.
 
 3.Categories Offering the Highest Discounts
-SELECT category,
+```SELECT category,
 ROUND(AVG(discountpercent),2) AS avg_discount
 FROM zepto
 GROUP BY category
 ORDER BY avg_discount DESC
-LIMIT 5;
+LIMIT 5;```
 
 **Insight**
 Categories with high discounts may indicate:
@@ -108,22 +110,22 @@ Categories with high discounts may indicate:
 3. price-sensitive consumer demand
 
 4. Best Value Products for Consumers
-SELECT name,
+```SELECT name,
 discountedsellingprice,
 ROUND(discountedsellingprice/weightInGms,2) AS price_per_gram
 FROM zepto
 WHERE weightInGms >= 100
-ORDER BY price_per_gram;
+ORDER BY price_per_gram;```
 
 **Insight**
 Products with the lowest price-per-gram provide the best value for customers and can be highlighted in recommendation systems or promotions.
 
 5. Inventory Weight Distribution by Category
-SELECT category,
+```SELECT category,
 SUM(weightInGms * availableQuantity) AS inventory_weight
 FROM zepto
 GROUP BY category
-ORDER BY inventory_weight DESC;
+ORDER BY inventory_weight DESC;```
 
 **Insight**
 This helps understand warehouse load distribution and optimize storage planning and logistics operations.
@@ -131,22 +133,22 @@ This helps understand warehouse load distribution and optimize storage planning 
 **Example Analytical Queries**
 
 **Top 10 Highest Discounted Products**
-SELECT name, discountpercent, category
+```SELECT name, discountpercent, category
 FROM zepto
 ORDER BY discountpercent DESC
-LIMIT 10;
+LIMIT 10;```
 
 **Products with Multiple SKUs**
-SELECT name, COUNT(sku_id) AS no_of_skus
+```SELECT name, COUNT(sku_id) AS no_of_skus
 FROM zepto
 GROUP BY name
 HAVING COUNT(sku_id) > 1
-ORDER BY no_of_skus DESC;
+ORDER BY no_of_skus DESC;```
 
 **Stock Availability Overview**
-SELECT outOfStock, COUNT(sku_id)
+```SELECT outOfStock, COUNT(sku_id)
 FROM zepto
-GROUP BY outOfStock;
+GROUP BY outOfStock;```
 
 **Tools & Technologies**
 | Tool       | Purpose                             |
