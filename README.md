@@ -60,3 +60,74 @@ Zepto, India's leading quick-commerce grocery platform, manages thousands of SKU
 - **Light-weight produce** perfect for Zepto's 10-minute delivery model
 
 ## Tech Stack
+Database: PostgreSQL 15+
+Tools: pgAdmin, SQLite, Excel
+Skills: SQL (CTEs, Window Functions, CASE), Data Cleaning, EDA
+Extensible: Python (Pandas), Power BI, Tableau
+
+
+## Installation & Setup
+```bash
+# 1. Install PostgreSQL or SQLite
+# 2. Create database and table
+psql -U username -d zepto_analysis
+
+# 3. Import CSV (convert Excel first)
+COPY zepto FROM '/path/to/zepto.csv' DELIMITER ',' CSV HEADER;
+
+# 4. Run analysis
+\i zepto_analysis.sql
+
+# 5. Verify
+SELECT COUNT(*) FROM zepto;  -- ~300 rows
+
+Sample Queries
+
+1. Top 10 Discounted Products
+SELECT name, discountpercent, category 
+FROM zepto 
+ORDER BY discountpercent DESC LIMIT 10;
+Results: Garlic Indian (18%), Chili Green (15%)—target for promo bundles
+
+2. Category Revenue Potential
+SELECT category, 
+       SUM(discountedSellingPrice * availableQuantity) AS estimated_revenue 
+FROM zepto 
+GROUP BY category 
+ORDER BY estimated_revenue DESC;
+Results: Cooking Essentials > Fruits & Vegetables
+
+3. Price per Gram Analysis
+SELECT name, 
+       weightInGms/1000.0 AS kg, 
+       ROUND(discountedSellingPrice/(weightInGms/1000.0), 2) AS price_per_kg 
+FROM zepto 
+WHERE weightInGms > 100 
+ORDER BY price_per_kg ASC LIMIT 10;
+Results: Potato (₹2900/kg), Onion (₹2100/kg)—budget buys
+
+Visualizations
+Recommended Charts:
+├── Bar: Category Revenue/Weight
+├── Pie: Stock Status Distribution  
+├── Scatter: MRP vs Discount %
+└── Heatmap: Category × Discount Matrix
+Tools: Power BI, Tableau, Python (Matplotlib/Seaborn)
+
+Future Improvements
+Time-series analysis: Add sales data for demand forecasting (ARIMA)
+
+ML Integration: Random Forest for stockout prediction
+
+Dashboard: Streamlit + PostgreSQL API
+
+Scale: Partitioning/indexes for 1M+ rows
+
+Real-time: Kafka + Spark Streaming for live inventory
+
+Author
+Data Analytics Specialist | Mumbai, India
+Skills: SQL, Python, Power BI, Economic Research
+Experience: Government projects, Academic research, E-commerce analytics
+
+
