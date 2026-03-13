@@ -126,6 +126,7 @@ Scale: Partitioning/indexes for 1M+ rows
 Real-time: Kafka + Spark Streaming for live inventory
 
 Author
+Suhas Jadhav
 Data Analytics Specialist | Mumbai, India
 Skills: SQL, Python, Power BI, Economic Research
 Experience: Government projects, Academic research, E-commerce analytics
