@@ -72,6 +72,7 @@ ORDER BY category;
 
 **Key Business Insights **
 1. Revenue Potential by Category
+
 SELECT category,
 SUM(discountedsellingprice * availablequantity) AS estimated_revenue
 FROM zepto
@@ -85,6 +86,7 @@ ORDER BY estimated_revenue DESC;
 4. marketing campaigns
 
 2. High Value Products Currently Out of Stock
+
 SELECT name, mrp
 FROM zepto
 WHERE mrp > 300
@@ -94,6 +96,7 @@ AND outofstock = TRUE;
 High-value products being out of stock indicate lost revenue opportunities and potential supply chain inefficiencies.
 
 3.Categories Offering the Highest Discounts
+
 SELECT category,
 ROUND(AVG(discountpercent),2) AS avg_discount
 FROM zepto
@@ -108,6 +111,7 @@ Categories with high discounts may indicate:
 3. price-sensitive consumer demand
 
 4. Best Value Products for Consumers
+
 SELECT name,
 discountedsellingprice,
 ROUND(discountedsellingprice/weightInGms,2) AS price_per_gram
@@ -119,6 +123,7 @@ ORDER BY price_per_gram;
 Products with the lowest price-per-gram provide the best value for customers and can be highlighted in recommendation systems or promotions.
 
 5. Inventory Weight Distribution by Category
+
 SELECT category,
 SUM(weightInGms * availableQuantity) AS inventory_weight
 FROM zepto
