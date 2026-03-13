@@ -9,9 +9,6 @@ The analysis demonstrates how SQL can be used to derive business insights from r
 
 
 **Project Workflow**
-
-The project follows a structured analytics workflow:
-
 Raw Dataset (Excel)
         │
         ▼
