@@ -70,7 +70,7 @@ SELECT DISTINCT category
 FROM zepto
 ORDER BY category;
 
-**Key Business Insights **
+**Key Business Insights**
 1. Revenue Potential by Category
 
 SELECT category,
