@@ -9,19 +9,11 @@ The analysis demonstrates how SQL can be used to derive business insights from r
 
 
 **Project Workflow**
-Raw Dataset (Excel)
-        │
-        ▼
-Data Import → PostgreSQL Database
-        │
-        ▼
-Data Cleaning & Transformation
-        │
-        ▼
-Exploratory Data Analysis (EDA)
-        │
-        ▼
-Business Insights Generation
+1. Raw Dataset (Excel)
+2. Data Import → PostgreSQL Database
+3. Data Cleaning & Transformation
+4. Exploratory Data Analysis (EDA)
+5. Business Insights Generation
 
 **Dataset**
 The dataset contains product-level inventory and pricing information from Zepto.
