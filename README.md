@@ -8,13 +8,13 @@ Project Overview
 This project analyzes product-level data from Zepto, a
 quick-commerce grocery delivery platform, using PostgreSQL.
 The goal of this project is to perform:
-1. Data cleaning\
-Exploratory Data Analysis (EDA)\
-Business insights generation
+1.Data cleaning\
+2.Exploratory Data Analysis (EDA)\
+3.Business insights generation
 Key focus areas include:
-Product pricing\
-Discount strategies\
-Inventory availability\
+1.Product pricing\
+2.Discount strategies\
+3.Inventory availability\
 Category-level performance
 The analysis demonstrates how SQL can be used to derive actionable
 business insights from retail datasets.
