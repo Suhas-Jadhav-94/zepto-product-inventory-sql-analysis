@@ -46,7 +46,7 @@ outOfStock BOOLEAN,
 quantity INTEGER
 );
 ```
-
+---
 **Data Cleaning**
 Before analysis, several cleaning steps were performed:
 1. Checked dataset size
@@ -56,9 +56,9 @@ Before analysis, several cleaning steps were performed:
 5. Validated stock availability
 
 Example cleaning query:
-DELETE FROM zepto
-WHERE mrp = 0;
-
+```DELETE FROM zepto
+WHERE mrp = 0;```
+---
 **Exploratory Data Analysis**
 Key EDA tasks performed:
 1. Counting total records
